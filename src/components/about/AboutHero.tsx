@@ -166,11 +166,11 @@ export default function AboutHero() {
           {[
             {
               label: "My Approach",
-              body: "My journey began with a curiosity for how things work, transforming into a dedicated career in building robust and user-centric web solutions. With a keen eye for detail and a problem-solving mindset, I craft seamless digital experiences that merge functional code with intuitive design. From conceptualization to deployment, I thrive on turning complex requirements into elegant, scalable software.",
+              body: "I started with a simple curiosity about how things work, which grew into a focused career building robust, user-centered web applications. With strong attention to detail and a problem-solving mindset, I create seamless digital experiences that combine solid engineering with intuitive design. From initial concept to deployment, I specialize in turning complex ideas into clean, scalable software.",
             },
             {
               label: "How I Work",
-              body: "I work primarily with international clients and own the entire development lifecycle from planning and proposals through to launch and handoff. Clean code, structured repos, and handoff docs so you're never locked into working with me. Projects are broken into clear phases with deliverables and payment gates at each milestone.",
+              body: "I work with international clients and take full ownership of the development lifecycle — from planning and proposals to launch and handoff. You get clean, well-structured code, organized repositories, and clear documentation, so you’re never dependent on me long-term. Each project is delivered in defined phases, with clear milestones, deliverables, and payment checkpoints to keep everything transparent and on track.",
             },
           ].map(({ label, body }) => (
             <motion.div
