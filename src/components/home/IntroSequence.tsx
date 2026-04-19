@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 
 const STORY_LINES = [
-  "Every line of code tells a story.",
-  "From a curious kid who loved building things —",
-  "To an engineer who turns ideas into reality.",
-  "3+ years. 10 platforms. Clients across 3 continents.",
-  "I don't just write code. I craft experiences.",
+  "Every product has a story. I help build it.",
+  "From idea to a scalable, production-ready platform.",
+  "Clean architecture. Fast performance. Real results.",
+  "Built for startups and businesses ready to grow.",
+  "More than code — I build systems that last.",
 ];
 
 const CODE_FRAGMENTS = [
