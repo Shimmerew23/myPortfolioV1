@@ -117,11 +117,11 @@ export default function AboutHero() {
               variants={staggerItem}
               className="text-text-secondary text-base leading-relaxed font-mono text-sm max-w-lg text-justify"
             >
-              I build production-ready web applications from the ground up — from
-              database architecture and backend APIs to polished frontend
-              interfaces and deployment. Specializing in{" "}
-              <span className="text-primary-muted">AI-integrated platforms</span>,
-              working with international clients across the US, Canada, and Europe.
+              I build production-ready web applications that are fast, scalable, 
+              and built to grow your business — from architecture to deployment. 
+              Trusted by international clients across the US, Canada, and Europe, 
+              with a focus on modern{" "}
+              <span className="text-primary-muted">AI-powered platforms</span>.
             </motion.p>
           </div>
         </motion.div>
