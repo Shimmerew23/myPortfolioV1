@@ -67,7 +67,7 @@ export default function HeroSection() {
 
           <motion.p
             variants={staggerItem}
-            className="text-text-secondary text-base sm:text-lg leading-relaxed mb-8 max-w-lg"
+            className="text-text-secondary text-base sm:text-lg leading-relaxed mb-8 max-w-lg text-justify"
           >
             I build scalable web platforms end-to-end — from system architecture
             to production deployment. Working with clients across the US, Canada,
