@@ -82,10 +82,17 @@ export default function ServicesSection() {
               return (
                 <motion.div
                   variants={staggerItem}
-                  className="relative glass rounded-2xl p-6 sm:p-8 border border-primary/20 group overflow-hidden"
+                  className="relative glass rounded-2xl p-6 sm:p-8 border border-primary/20 group"
                 >
                   <div className="absolute -top-10 -right-10 w-[300px] h-[200px] opacity-[0.15] pointer-events-none"
                     style={{ background: `radial-gradient(ellipse, ${featured.accent} 0%, transparent 70%)`, filter: "blur(40px)" }} />
+
+                  <span
+                    className="absolute -top-3.5 right-4 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border z-10"
+                    style={{ color: featured.accent, borderColor: `${featured.accent}40`, background: `#1a0a08` }}
+                  >
+                    Most Popular
+                  </span>
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-6 relative z-10">
                     <div className="flex items-start gap-5 flex-1">
@@ -96,14 +103,10 @@ export default function ServicesSection() {
                         <FeaturedIcon size={22} style={{ color: featured.accent }} />
                       </div>
                       <div>
-                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
+                        <div className="mb-1">
                           <h3 className="text-base font-semibold text-fg group-hover:text-primary transition-colors">
                             {featured.title}
                           </h3>
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-widest border"
-                            style={{ color: featured.accent, borderColor: `${featured.accent}40`, background: `${featured.accent}12` }}>
-                            Most Popular
-                          </span>
                         </div>
                         <p className="text-text-secondary text-sm leading-relaxed max-w-xl">
                           {featured.description}
