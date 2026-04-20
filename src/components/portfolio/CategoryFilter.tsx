@@ -18,14 +18,14 @@ export default function CategoryFilter({ categories, active, onChange }: Props) 
             key={cat}
             onClick={() => onChange(cat)}
             className={cn(
-              "relative px-4 py-2 rounded-xl text-sm font-mono transition-colors duration-200",
-              isActive ? "text-primary" : "text-text-secondary hover:text-fg"
+              "relative px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-widest transition-colors duration-200",
+              isActive ? "text-primary" : "text-text-tertiary hover:text-fg"
             )}
           >
             {isActive && (
               <motion.span
                 layoutId="cat-active"
-                className="absolute inset-0 rounded-xl bg-primary-faint border border-primary-dark/40"
+                className="absolute inset-0 rounded-xl bg-primary-faint border border-primary-dark/50"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
               />
             )}

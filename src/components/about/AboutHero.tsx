@@ -1,22 +1,21 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Briefcase, GraduationCap } from "lucide-react";
+import Link from "next/link";
+import { MapPin, GraduationCap, Layers, Users, ArrowRight, CheckCircle2 } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 
-const chips = [
-  { icon: MapPin,          label: "Philippines" },
-  { icon: Briefcase,       label: "Available for Work" },
-  { icon: GraduationCap,   label: "BS Computer Engineering" },
+const stats = [
+  { value: "3+",  label: "Years Experience", note: "Since 2021" },
+  { value: "10+", label: "Projects Shipped",  note: "Live in production" },
+  { value: "3",   label: "Countries Served",  note: "US · Canada · EU" },
+  { value: "5+",  label: "Industries",        note: "SaaS · GIS · AI · more" },
 ];
 
-const roles = ["Full-Stack Developer", "Prompt Engineer", "Technical Consultant"];
-
-const stats = [
-  { value: "3+",  label: "Years Experience" },
-  { value: "10+", label: "Projects Shipped" },
-  { value: "3",   label: "Countries Served" },
-  { value: "5+",  label: "Industries Served" },
+const guarantees = [
+  "Clean, documented code you own",
+  "Defined milestones & deliverables",
+  "On-time or negotiated delivery",
 ];
 
 export default function AboutHero() {
@@ -28,9 +27,6 @@ export default function AboutHero() {
       {/* Orb — white top-right */}
       <div className="absolute -top-10 right-1/4 w-[400px] h-[400px] opacity-[0.04] pointer-events-none"
         style={{ background: "radial-gradient(ellipse, #ffffff 0%, transparent 65%)", filter: "blur(70px)" }} />
-      {/* Orb — white bottom-left */}
-      <div className="absolute bottom-10 left-1/4 w-[350px] h-[350px] opacity-[0.03] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, #ffffff 0%, transparent 65%)", filter: "blur(80px)" }} />
       {/* Semi-circle — left edge */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-[200px] w-[400px] h-[400px] rounded-full opacity-[0.18] pointer-events-none"
         style={{ background: "radial-gradient(ellipse, #8d021f 0%, transparent 70%)", filter: "blur(50px)" }} />
@@ -48,10 +44,9 @@ export default function AboutHero() {
           animate="visible"
           className="grid md:grid-cols-[3fr_2fr] gap-10 items-center"
         >
-          {/* ── Left: Content ── (swapped to order-1 on desktop) */}
           {/* ── Right: Image ── */}
           <motion.div variants={staggerItem} className="flex justify-center md:justify-end order-1 md:order-2">
-            <div className="relative w-80 h-80 sm:w-[380px] sm:h-[400px]">
+            <div className="relative w-80 h-80 sm:w-[380px] sm:h-[420px]">
               <Image
                 src="/images/profile.jpg"
                 alt="Justine Psalm Acosta"
@@ -70,14 +65,30 @@ export default function AboutHero() {
                   `,
                 }}
               />
+              {/* Floating availability badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.4 }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/40 bg-[#171212]/80 backdrop-blur-sm text-emerald-400 text-[11px] font-mono uppercase tracking-widest whitespace-nowrap"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Available for Projects
+              </motion.div>
             </div>
           </motion.div>
 
           {/* ── Left: Content ── */}
           <div className="space-y-5 order-2 md:order-1">
-            {/* Chips */}
+            {/* Meta chips */}
             <motion.div variants={staggerItem} className="flex flex-wrap gap-2">
-              {chips.map(({ icon: Icon, label }) => (
+              {[
+                { icon: MapPin, label: "Philippines" },
+                { icon: GraduationCap, label: "BS Computer Engineering" },
+              ].map(({ icon: Icon, label }) => (
                 <span
                   key={label}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-outline/60 bg-surface-0 text-text-secondary text-[11px] font-mono uppercase tracking-widest"
@@ -102,12 +113,10 @@ export default function AboutHero() {
               variants={staggerItem}
               className="text-[11px] font-mono uppercase tracking-[0.2em] text-text-secondary flex flex-wrap items-center gap-2"
             >
-              {roles.map((r, i) => (
+              {["Full-Stack Developer", "Prompt Engineer", "Technical Consultant"].map((r, i, arr) => (
                 <span key={r} className="flex items-center gap-2">
                   {r}
-                  {i < roles.length - 1 && (
-                    <span className="text-primary-dark">·</span>
-                  )}
+                  {i < arr.length - 1 && <span className="text-primary-dark">·</span>}
                 </span>
               ))}
             </motion.p>
@@ -115,14 +124,40 @@ export default function AboutHero() {
             {/* Bio */}
             <motion.p
               variants={staggerItem}
-              className="text-text-secondary text-base leading-relaxed font-mono text-sm max-w-lg text-justify"
+              className="text-text-secondary text-sm leading-relaxed max-w-lg text-justify"
             >
-              I build production-ready web applications that are fast, scalable, 
-              and built to grow your business — from architecture to deployment. 
-              Trusted by international clients across the US, Canada, and Europe, 
-              with a focus on modern{" "}
+              I build production-ready web applications that are fast, scalable, and built to grow
+              your business — from architecture to deployment. Trusted by international clients
+              across the US, Canada, and Europe, with a focus on{" "}
               <span className="text-primary-muted">AI-powered platforms</span>.
             </motion.p>
+
+            {/* Guarantees */}
+            <motion.ul variants={staggerItem} className="space-y-1.5">
+              {guarantees.map((g) => (
+                <li key={g} className="flex items-center gap-2 text-xs text-text-secondary">
+                  <CheckCircle2 size={13} className="text-emerald-500 shrink-0" />
+                  {g}
+                </li>
+              ))}
+            </motion.ul>
+
+            {/* CTA buttons */}
+            <motion.div variants={staggerItem} className="flex flex-wrap gap-3 pt-1">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-bg text-sm font-semibold hover:bg-primary/90 transition-all duration-200"
+              >
+                Hire Me
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center px-6 py-3 rounded-full border border-outline/60 bg-surface-0 text-text-secondary text-sm font-mono uppercase tracking-widest hover:border-primary/40 hover:text-fg transition-all duration-200"
+              >
+                View Projects
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -133,59 +168,92 @@ export default function AboutHero() {
           animate="visible"
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12"
         >
-          {stats.map(({ value, label }) => {
+          {stats.map(({ value, label, note }) => {
             const num    = value.replace(/\D/g, "");
             const suffix = value.replace(/\d/g, "");
             return (
               <motion.div
                 key={label}
                 variants={staggerItem}
-                className="glass rounded-2xl p-5 text-center hover:border-primary/20 transition-all"
+                className="glass rounded-2xl p-5 text-center hover:border-primary/20 transition-all group border-t border-t-primary/20"
               >
                 <p className="font-display text-4xl text-primary mb-1 leading-none">
                   {num}
-                  {suffix && (
-                    <sup className="text-xl text-primary align-super">{suffix}</sup>
-                  )}
+                  {suffix && <sup className="text-xl text-primary align-super">{suffix}</sup>}
                 </p>
-                <p className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary mt-2">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary mt-1">
                   {label}
+                </p>
+                <p className="text-[10px] text-text-tertiary/60 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  {note}
                 </p>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* ── Philosophy columns ── */}
+        {/* ── Build modes + Philosophy ── */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 gap-6 mt-6 text-justify"
+          className="mt-6 glass rounded-2xl overflow-hidden"
         >
-          {[
-            {
-              label: "My Approach",
-              body: "I started with a simple curiosity about how things work, which grew into a focused career building robust, user-centered web applications. With strong attention to detail and a problem-solving mindset, I create seamless digital experiences that combine solid engineering with intuitive design. From initial concept to deployment, I specialize in turning complex ideas into clean, scalable software.",
-            },
-            {
-              label: "How I Work",
-              body: "I work with international clients and take full ownership of the development lifecycle — from planning and proposals to launch and handoff. You get clean, well-structured code, organized repositories, and clear documentation, so you’re never dependent on me long-term. Each project is delivered in defined phases, with clear milestones, deliverables, and payment checkpoints to keep everything transparent and on track.",
-            },
-          ].map(({ label, body }) => (
-            <motion.div
-              key={label}
-              variants={staggerItem}
-              className="glass rounded-2xl p-8 border-l-2 border-l-primary-dark"
-            >
-              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary-muted mb-4">
-                {label}
-              </p>
-              <p className="text-text-secondary font-mono text-sm leading-relaxed">
-                {body}
-              </p>
-            </motion.div>
-          ))}
+          {/* Build modes row */}
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-outline/40">
+            {[
+              {
+                icon: Layers,
+                title: "Build Our Own Products",
+                body: "We create scalable apps, platforms, and tools — solving real problems with products we believe in.",
+              },
+              {
+                icon: Users,
+                title: "Build for Others",
+                body: "MVP development, web & mobile apps, AI solutions, and custom software — built for founders who move fast.",
+              },
+            ].map(({ icon: Icon, title, body }) => (
+              <motion.div
+                key={title}
+                variants={staggerItem}
+                className="flex items-start gap-4 p-6 group hover:bg-primary/[0.03] transition-colors duration-300"
+              >
+                <div className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center bg-primary/10 border border-primary/20 mt-0.5">
+                  <Icon size={16} className="text-primary-muted" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-fg mb-1 group-hover:text-primary transition-colors">
+                    {title}
+                  </h3>
+                  <p className="text-text-tertiary text-xs leading-relaxed">{body}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-outline/40" />
+
+          {/* Philosophy row */}
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-outline/40">
+            {[
+              {
+                label: "My Approach",
+                body: "I started with a simple curiosity about how things work, which grew into a focused career building robust, user-centered web applications. With strong attention to detail and a problem-solving mindset, I create seamless digital experiences that combine solid engineering with intuitive design.",
+              },
+              {
+                label: "How I Work",
+                body: "I work with international clients and take full ownership of the development lifecycle — from planning and proposals to launch and handoff. You get clean, well-structured code, organized repositories, and clear documentation so you're never dependent on me long-term.",
+              },
+            ].map(({ label, body }) => (
+              <motion.div key={label} variants={staggerItem} className="p-6">
+                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary-muted mb-3">
+                  {label}
+                </p>
+                <p className="text-text-secondary text-sm leading-relaxed text-justify">{body}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

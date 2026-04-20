@@ -5,8 +5,8 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "fra
 const STORY_LINES = [
   "Every product has a story. I help build it.",
   "From idea to a scalable, production-ready platform.",
-  "Clean architecture. Fast performance. Real results.",
-  "Built for startups and businesses ready to grow.",
+  "Clean code. Fast delivery. Measurable results.",
+  "Trusted by startups and businesses across three continents.",
   "More than code — I build systems that last.",
 ];
 

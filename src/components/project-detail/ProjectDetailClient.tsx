@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, ExternalLink, Shield, ChevronLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Shield, ChevronLeft, Rocket } from "lucide-react";
 import type { Project } from "@/types";
 import { getCategoryColors } from "@/lib/categoryColors";
 import TechPill from "@/components/ui/TechPill";
@@ -98,9 +98,10 @@ export default function ProjectDetailClient({ project, prev, next }: Props) {
           )}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-outline text-text-secondary hover:text-fg hover:border-outline-hover text-sm transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-outline text-text-secondary hover:text-fg hover:border-primary/30 text-sm transition-all"
           >
-            Discuss a Project
+            <Rocket size={14} />
+            Build Something Similar
           </Link>
         </motion.div>
       </motion.section>
@@ -187,20 +188,23 @@ export default function ProjectDetailClient({ project, prev, next }: Props) {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             <ScrollReveal>
-              <div className="glass rounded-2xl p-5 sticky top-28">
-                <h3 className="text-xs font-mono uppercase tracking-widest text-text-secondary mb-4">
-                  Tech Stack
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <TechPill key={tech} label={tech} />
-                  ))}
+              <div className="glass rounded-2xl p-5 sticky top-28 space-y-5">
+                {/* Tech stack */}
+                <div>
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-text-secondary mb-4">
+                    Tech Stack
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech) => (
+                      <TechPill key={tech} label={tech} />
+                    ))}
+                  </div>
                 </div>
 
                 {project.liveUrl && (
-                  <div className="mt-6 pt-4 border-t border-outline/30">
+                  <div className="pt-4 border-t border-outline/30">
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -215,6 +219,23 @@ export default function ProjectDetailClient({ project, prev, next }: Props) {
                     </a>
                   </div>
                 )}
+
+                {/* CTA */}
+                <div className="pt-4 border-t border-outline/30">
+                  <p className="text-xs font-mono uppercase tracking-widest text-primary-muted mb-2">
+                    Like what you see?
+                  </p>
+                  <p className="text-text-secondary text-xs leading-relaxed mb-4">
+                    I can build something similar — or better — tailored to your business.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="group flex items-center justify-between w-full px-4 py-3 rounded-xl bg-primary text-bg text-sm font-semibold hover:bg-primary/90 transition-all duration-200"
+                  >
+                    Start a Project
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                </div>
               </div>
             </ScrollReveal>
           </div>
