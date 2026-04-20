@@ -106,13 +106,24 @@ export default function TimelineSection() {
                 </motion.p>
 
                 {/* Role */}
-                <motion.h3
-                  animate={{ x: hovered === i ? 5 : 0, color: hovered === i ? "#ece0df" : "#c9b8b7" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="font-display text-2xl italic mb-3 leading-tight"
-                >
-                  {item.role}
-                </motion.h3>
+                <div className="flex items-center gap-2 mb-3 flex-wrap">
+                  <motion.h3
+                    animate={{ x: hovered === i ? 5 : 0, color: hovered === i ? "#ece0df" : "#c9b8b7" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    className="font-display text-2xl italic leading-tight"
+                  >
+                    {item.role}
+                  </motion.h3>
+                  {item.active && (
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                      </span>
+                      Current
+                    </span>
+                  )}
+                </div>
 
                 {/* Org */}
                 {item.org && (
@@ -121,9 +132,9 @@ export default function TimelineSection() {
 
                 {/* Description */}
                 <motion.p
-                  animate={{ opacity: hovered === i ? 0.85 : 0.55 }}
+                  animate={{ opacity: hovered === i ? 0.9 : 0.6 }}
                   transition={{ duration: 0.2 }}
-                  className="text-sm font-mono leading-relaxed text-justify text-text-secondary"
+                  className="text-sm leading-relaxed text-text-secondary"
                 >
                   {item.description}
                 </motion.p>

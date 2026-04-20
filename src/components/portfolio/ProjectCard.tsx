@@ -2,7 +2,7 @@
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ShieldCheck, HelpCircle } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, HelpCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "@/types";
 import { getCategoryColors } from "@/lib/categoryColors";
@@ -91,12 +91,11 @@ function PublicCardContent({
             <div
               className="absolute inset-0"
               style={{
-                background: `linear-gradient(to bottom, transparent 40%, rgba(32,26,26,0.95) 100%)`,
+                background: `linear-gradient(to bottom, transparent 30%, rgba(32,26,26,0.97) 100%)`,
               }}
             />
           </>
         ) : (
-          /* No-image placeholder */
           <div
             className="absolute inset-0 flex flex-col items-center justify-center gap-3"
             style={{
@@ -122,7 +121,7 @@ function PublicCardContent({
           </div>
         )}
 
-        {/* Category badge */}
+        {/* Badges */}
         <div className="absolute top-4 left-4 flex items-center gap-2">
           <span
             className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest"
@@ -135,7 +134,11 @@ function PublicCardContent({
             {project.category}
           </span>
           {project.liveUrl && (
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-primary-faint border border-primary-dark/50 text-primary">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+              </span>
               Live
             </span>
           )}
@@ -148,19 +151,24 @@ function PublicCardContent({
       </div>
 
       <div className="p-5 relative z-10">
-        <h3 className="font-medium text-fg group-hover:text-primary transition-colors mb-1.5">
+        <h3 className="font-medium text-fg group-hover:text-primary transition-colors mb-1.5 line-clamp-1">
           {project.title}
         </h3>
-        <p className="text-text-secondary text-sm leading-relaxed line-clamp-2 mb-4">
+        <p className="text-text-secondary text-sm leading-relaxed line-clamp-2 mb-4 min-h-[2.75rem]">
           {project.tagline}
         </p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.techStack.slice(0, isFeatured ? 6 : 3).map((tech) => (
-            <TechPill key={tech} label={tech} size="sm" />
-          ))}
-          {project.techStack.length > (isFeatured ? 6 : 3) && (
-            <TechPill label={`+${project.techStack.length - (isFeatured ? 6 : 3)}`} size="sm" />
-          )}
+        <div className="flex items-center justify-between gap-2">
+          <div className={`flex gap-1.5 ${isFeatured ? "flex-wrap" : "flex-nowrap overflow-hidden"}`}>
+            {project.techStack.slice(0, isFeatured ? 6 : 2).map((tech) => (
+              <TechPill key={tech} label={tech} size="sm" />
+            ))}
+            {project.techStack.length > (isFeatured ? 6 : 2) && (
+              <TechPill label={`+${project.techStack.length - (isFeatured ? 6 : 2)}`} size="sm" />
+            )}
+          </div>
+          <span className="shrink-0 flex items-center gap-1 text-[11px] font-mono text-primary-muted opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            View Case Study <ArrowRight size={11} />
+          </span>
         </div>
       </div>
     </Link>
@@ -177,9 +185,9 @@ function NdaCardContent({
   isFeatured: boolean;
 }) {
   return (
-    <div className="flex flex-col h-full cursor-default">
-      <div className="relative flex-1 overflow-hidden">
-        {/* Subtle gradient background */}
+    <Link href={`/portfolio/${project.slug}`} className="flex flex-col h-full">
+      <div className="relative h-[220px] shrink-0 overflow-hidden">
+        {/* Gradient background */}
         <div
           className="absolute inset-0"
           style={{
@@ -223,38 +231,56 @@ function NdaCardContent({
           <span className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">
             Under NDA
           </span>
+          <span className="text-[10px] font-mono text-text-tertiary/50 opacity-0 group-hover:opacity-100 transition-opacity">
+            Details available on request
+          </span>
         </div>
 
-        {/* Category badge */}
-        <div className="absolute top-4 left-4">
+        {/* Badges */}
+        <div className="absolute top-4 left-4 flex items-center gap-2">
           <span
             className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest"
             style={{
-              background: "rgba(23,18,18,0.7)",
-              border: "1px solid var(--outline)",
-              color: "var(--text-tertiary)",
+              background: `rgba(${colors.primary.join(",")}, 0.15)`,
+              border: `1px solid rgba(${colors.primary.join(",")}, 0.3)`,
+              color: `rgb(${colors.accent.join(",")})`,
             }}
           >
+            {project.category}
+          </span>
+          <span className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-surface-1/80 border border-outline text-text-tertiary">
             Confidential
           </span>
+        </div>
+
+        {/* Arrow on hover */}
+        <div className="absolute top-4 right-4 w-8 h-8 rounded-full border border-outline/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-bg/60 backdrop-blur-sm">
+          <ArrowUpRight size={13} className="text-primary" />
         </div>
       </div>
 
       <div className="p-5">
-        <h3 className="font-medium text-fg mb-1.5">{project.title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed line-clamp-2 mb-4">
+        <h3 className="font-medium text-fg group-hover:text-primary transition-colors mb-1.5 line-clamp-1">
+          {project.title}
+        </h3>
+        <p className="text-text-secondary text-sm leading-relaxed line-clamp-2 mb-4 min-h-[2.75rem]">
           {project.tagline}
         </p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.techStack.slice(0, 3).map((tech) => (
-            <TechPill key={tech} label={tech} size="sm" />
-          ))}
-          {project.techStack.length > 3 && (
-            <TechPill label={`+${project.techStack.length - 3}`} size="sm" />
-          )}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-nowrap gap-1.5 overflow-hidden">
+            {project.techStack.slice(0, 2).map((tech) => (
+              <TechPill key={tech} label={tech} size="sm" />
+            ))}
+            {project.techStack.length > 2 && (
+              <TechPill label={`+${project.techStack.length - 2}`} size="sm" />
+            )}
+          </div>
+          <span className="shrink-0 flex items-center gap-1 text-[11px] font-mono text-primary-muted opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            View Details <ArrowRight size={11} />
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

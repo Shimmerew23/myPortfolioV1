@@ -2,6 +2,13 @@ import type { Service } from "@/types";
 
 export const services: Service[] = [
   {
+    title: "MVP in 7–14 Days",
+    description:
+      "Go from idea to a working product in record time. Rapid prototyping and lean development to get your MVP in front of users fast.",
+    icon: "Timer",
+    accent: "#fb923c",
+  },
+  {
     title: "Full-Stack Web Development",
     description:
       "End-to-end web application development from UI to database architecture. I architect, build, and deploy production-grade systems optimized for performance and maintainability.",
@@ -56,5 +63,12 @@ export const services: Service[] = [
       "CI/CD pipelines, Docker containerization, AWS infrastructure, and NGINX configuration. From zero to production with reliability and observability.",
     icon: "Server",
     accent: "#a5f3fc",
+  },
+  {
+    title: "UI/UX Design",
+    description:
+      "Clean, conversion-focused design that users love. From wireframes to polished interfaces built for clarity, delight, and results.",
+    icon: "Palette",
+    accent: "#c084fc",
   },
 ];
