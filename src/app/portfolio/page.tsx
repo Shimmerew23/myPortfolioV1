@@ -56,9 +56,9 @@ export default function PortfolioPage() {
             </p>
 
             {/* Stats bar */}
-            <div className="inline-flex items-center divide-x divide-outline/40 glass rounded-2xl border border-outline/40 overflow-hidden mb-10">
+            <div className="flex w-full sm:w-auto sm:inline-flex items-center divide-x divide-outline/40 glass rounded-2xl border border-outline/40 overflow-hidden mb-10">
               {stats.map(({ value, label }) => (
-                <div key={label} className="px-8 py-3 text-center">
+                <div key={label} className="flex-1 sm:flex-none px-4 sm:px-8 py-3 text-center">
                   <p className="font-display text-2xl text-primary leading-none mb-0.5">{value}</p>
                   <p className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">{label}</p>
                 </div>
