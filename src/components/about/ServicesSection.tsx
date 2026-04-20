@@ -96,7 +96,7 @@ export default function ServicesSection() {
                         <FeaturedIcon size={22} style={{ color: featured.accent }} />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
                           <h3 className="text-base font-semibold text-fg group-hover:text-primary transition-colors">
                             {featured.title}
                           </h3>
