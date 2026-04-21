@@ -94,13 +94,23 @@ export default function Navbar() {
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 top-[60px] z-40 glass px-6 py-6"
-          >
+          <>
+            {/* Blur overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-30 backdrop-blur-sm bg-black/20"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-x-0 top-[60px] z-40 px-6 py-6 bg-[#171212]/60 backdrop-blur-xl"
+            >
             <ul className="flex flex-col gap-2">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -129,7 +139,8 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

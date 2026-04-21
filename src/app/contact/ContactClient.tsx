@@ -216,22 +216,20 @@ export default function ContactClient() {
           <ScrollReveal delay={0.1} className="md:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="glass rounded-2xl p-5 sm:p-6 space-y-4"
+              className="relative glass rounded-2xl p-5 sm:p-6 space-y-4"
             >
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <div>
-                  <h2 className="text-lg font-medium text-fg mb-1">Send a Message</h2>
-                  <p className="text-text-tertiary text-xs">
-                    All fields marked * are required. I&apos;ll reply within 24 hours.
-                  </p>
-                </div>
-                <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-widest">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                  </span>
-                  Accepting Projects
+              <span className="absolute -top-3.5 right-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-500/40 bg-surface-0 text-emerald-400 text-[10px] font-mono uppercase tracking-widest shadow-sm">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
                 </span>
+                Accepting Projects
+              </span>
+              <div className="mb-2">
+                <h2 className="text-lg font-medium text-fg mb-1">Send a Message</h2>
+                <p className="text-text-tertiary text-xs">
+                  All fields marked * are required. I&apos;ll reply within 24 hours.
+                </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-3">
