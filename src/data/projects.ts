@@ -93,29 +93,6 @@ export const projects: Project[] = [
     isNda: true,
   },
   {
-    slug: "cartly",
-    title: "The Cartly eCommerce Platform",
-    category: "E-Commerce",
-    tagline: "Modern eCommerce with scalable full-stack architecture",
-    description:
-      "A full-featured eCommerce platform with real-time cart management, product discovery, Redis-backed sessions, and a custom storefront. Designed for performance and extensibility at scale.",
-    challenge:
-      "Building a production-grade eCommerce system that handles high-concurrency sessions, maintains real-time cart sync, and delivers sub-second page loads across catalog pages.",
-    solution:
-      "Architected a React + Vite frontend with Redux for cart state, backed by a Node.js/Express API with MongoDB and Redis caching layers. NGINX handles reverse proxying and static asset serving.",
-    techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "MongoDB", "Redis", "Redux", "Node.js", "Express", "NGINX"],
-    features: [
-      "Real-time cart sync with Redis session store",
-      "Faceted product search with instant filtering",
-      "Admin dashboard for inventory management",
-      "Optimistic UI updates for seamless UX",
-      "Mobile-first responsive storefront",
-    ],
-    image: "/images/projects/cartly.png",
-    isNda: false,
-    // liveUrl: "https://mcartly.vercel.app/",
-  },
-  {
     slug: "ai-transcription",
     title: "AI Transcription & Editing Platform",
     category: "AI / Productivity",
@@ -158,6 +135,29 @@ export const projects: Project[] = [
     ],
     image: undefined,
     isNda: true,
+  },
+  {
+    slug: "cartly",
+    title: "eCommerce Platform",
+    category: "E-Commerce",
+    tagline: "Modern eCommerce with scalable full-stack architecture",
+    description:
+      "A full-featured eCommerce platform with real-time cart management, product discovery, Redis-backed sessions, and a custom storefront. Designed for performance and extensibility at scale.",
+    challenge:
+      "Building a production-grade eCommerce system that handles high-concurrency sessions, maintains real-time cart sync, and delivers sub-second page loads across catalog pages.",
+    solution:
+      "Architected a React + Vite frontend with Redux for cart state, backed by a Node.js/Express API with MongoDB and Redis caching layers. NGINX handles reverse proxying and static asset serving.",
+    techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion", "MongoDB", "Redis", "Redux", "Node.js", "Express", "NGINX"],
+    features: [
+      "Real-time cart sync with Redis session store",
+      "Faceted product search with instant filtering",
+      "Admin dashboard for inventory management",
+      "Optimistic UI updates for seamless UX",
+      "Mobile-first responsive storefront",
+    ],
+    image: "/images/projects/cartly.png",
+    isNda: false,
+    // liveUrl: "https://mcartly.vercel.app/",
   },
   {
     slug: "entertainment-booking",
