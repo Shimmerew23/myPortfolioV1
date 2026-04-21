@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ShieldCheck, HelpCircle, ArrowRight } from "lucide-react";
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function ProjectCard({ project, variant = "default", priority }: Props) {
+  const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const [glow, setGlow] = useState({ x: 50, y: 50, opacity: 0 });
   const colors = getCategoryColors(project.category);
@@ -39,10 +41,11 @@ export default function ProjectCard({ project, variant = "default", priority }: 
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => router.push(`/portfolio/${project.slug}`)}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "relative rounded-2xl overflow-hidden border border-outline/60 bg-surface-0 shimmer-card group flex flex-col",
+        "relative rounded-2xl overflow-hidden border border-outline/60 bg-surface-0 shimmer-card group flex flex-col cursor-pointer",
         isFeatured ? "col-span-2 h-[520px]" : "h-[380px]"
       )}
     >
@@ -231,9 +234,9 @@ function NdaCardContent({
           <span className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">
             Under NDA
           </span>
-          <span className="text-[10px] font-mono text-text-tertiary/50 opacity-0 group-hover:opacity-100 transition-opacity">
+          {/* <span className="text-[10px] font-mono text-text-tertiary/50 opacity-0 group-hover:opacity-100 transition-opacity">
             Details available on request
-          </span>
+          </span> */}
         </div>
 
         {/* Badges */}
