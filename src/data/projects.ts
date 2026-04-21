@@ -27,7 +27,7 @@ export const projects: Project[] = [
   },
   {
     slug: "verdant",
-    title: "Verdant Messaging App",
+    title: "Messaging App Platform",
     category: "Communication",
     tagline: "Private, security-first real-time messaging platform",
     description:

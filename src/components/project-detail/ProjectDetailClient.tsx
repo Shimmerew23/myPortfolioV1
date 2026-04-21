@@ -20,114 +20,124 @@ export default function ProjectDetailClient({ project, prev, next }: Props) {
   const colors = getCategoryColors(project.category);
 
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      {/* Back */}
-      <div className="max-w-6xl mx-auto px-6 mb-10">
-        <Link
-          href="/portfolio"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm"
-        >
-          <ChevronLeft size={15} />
-          Back to Portfolio
-        </Link>
-      </div>
-
-      {/* Hero */}
+    <div className="min-h-screen pb-20">
+      {/* Hero with background image */}
       <motion.section
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="max-w-6xl mx-auto px-6 mb-16"
+        className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden"
       >
+        {/* Background image */}
+        {project.image && !project.isNda && (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover object-top opacity-40 mix-blend-luminosity"
+            priority
+          />
+        )}
+
+        {/* Color tint — ties image hue to the project's accent */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `rgba(${colors.primary.join(",")}, 0.08)`,
+            mixBlendMode: "color",
+          }}
+        />
+
+        {/* Gradient overlay — fades into page bg */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(13,11,11,0.3) 0%, rgba(13,11,11,0.6) 50%, rgba(13,11,11,1) 88%)",
+          }}
+        />
+
         {/* Atmospheric orb */}
         <div
-          className="fixed top-0 right-0 w-[600px] h-[600px] pointer-events-none opacity-[0.08]"
+          className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none opacity-[0.12]"
           style={{
             background: `radial-gradient(circle, rgb(${colors.primary.join(",")}) 0%, transparent 70%)`,
             filter: "blur(100px)",
           }}
         />
 
-        <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-3 mb-6">
-          <span
-            className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
-            style={{
-              background: `rgba(${colors.primary.join(",")}, 0.15)`,
-              border: `1px solid rgba(${colors.primary.join(",")}, 0.35)`,
-              color: `rgb(${colors.accent.join(",")})`,
-            }}
-          >
-            {project.category}
-          </span>
-          {project.isNda && (
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-surface-1 border border-outline text-text-tertiary">
-              <Shield size={10} />
-              NDA Project
-            </span>
-          )}
-        </motion.div>
-
-        <motion.h1
-          variants={staggerItem}
-          className="font-display text-4xl sm:text-5xl md:text-6xl font-normal text-fg leading-tight mb-4"
-        >
-          {project.title.split("—")[0]}
-          {project.title.includes("—") && (
-            <span className="italic text-primary">— {project.title.split("—")[1]}</span>
-          )}
-        </motion.h1>
-
-        <motion.p
-          variants={staggerItem}
-          className="text-text-secondary text-lg leading-relaxed max-w-3xl mb-6"
-        >
-          {project.description}
-        </motion.p>
-
-        <motion.div variants={staggerItem} className="flex flex-wrap gap-3">
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-bg font-medium text-sm hover:bg-primary/90 transition-all"
+        {/* Hero content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pb-16 pt-32 w-full">
+          {/* Back link */}
+          <motion.div variants={staggerItem} className="mb-8">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm"
             >
-              <ExternalLink size={14} />
-              View Live
-            </a>
-          )}
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-outline text-text-secondary hover:text-fg hover:border-primary/30 text-sm transition-all"
+              <ChevronLeft size={15} />
+              Back to Portfolio
+            </Link>
+          </motion.div>
+
+          <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-3 mb-6">
+            <span
+              className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
+              style={{
+                background: `rgba(${colors.primary.join(",")}, 0.2)`,
+                border: `1px solid rgba(${colors.primary.join(",")}, 0.4)`,
+                color: `rgb(${colors.accent.join(",")})`,
+              }}
+            >
+              {project.category}
+            </span>
+            {project.isNda && (
+              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-surface-1 border border-outline text-text-tertiary">
+                <Shield size={10} />
+                NDA Project
+              </span>
+            )}
+          </motion.div>
+
+          <motion.h1
+            variants={staggerItem}
+            className="font-display text-5xl sm:text-6xl md:text-7xl font-normal text-white leading-tight mb-4"
           >
-            <Rocket size={14} />
-            Build Something Similar
-          </Link>
-        </motion.div>
+            {project.title.split("—")[0]}
+            {project.title.includes("—") && (
+              <span className="italic text-primary">— {project.title.split("—")[1]}</span>
+            )}
+          </motion.h1>
+
+          <motion.p
+            variants={staggerItem}
+            className="text-white/70 text-lg leading-relaxed max-w-2xl mb-8"
+          >
+            {project.description}
+          </motion.p>
+
+          <motion.div variants={staggerItem} className="flex flex-wrap gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-bg font-medium text-sm hover:bg-white/90 transition-all"
+              >
+                <ExternalLink size={14} />
+                Live Site
+              </a>
+            )}
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/30 text-white/80 hover:text-white hover:border-white/50 text-sm transition-all"
+            >
+              <Rocket size={14} />
+              Build Something Similar
+            </Link>
+          </motion.div>
+        </div>
       </motion.section>
 
-      {/* Cover image */}
-      {project.image && !project.isNda && (
-        <ScrollReveal className="max-w-6xl mx-auto px-6 mb-16">
-          <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden border border-outline/60">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to bottom, transparent 60%, rgba(23,18,18,0.6) 100%)",
-              }}
-            />
-          </div>
-        </ScrollReveal>
-      )}
-
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 pt-16">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="md:col-span-2 space-y-12">
