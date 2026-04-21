@@ -13,11 +13,6 @@ export const metadata: Metadata = {
     "Explore Justine Psalm Acosta's portfolio of web applications, SaaS platforms, and AI-integrated products.",
 };
 
-const stats = [
-  { value: "10+", label: "Projects Shipped" },
-  { value: "3",   label: "Countries" },
-  { value: "5+",  label: "Industries" },
-];
 
 export default function PortfolioPage() {
   return (
@@ -47,7 +42,7 @@ export default function PortfolioPage() {
             </div>
 
             <h1 className="font-display text-5xl sm:text-6xl font-normal text-fg mb-5">
-              Selected <span className="italic text-primary">Work</span>
+              Project <span className="italic text-primary">Gallery</span>
             </h1>
 
             <p className="text-text-secondary text-base max-w-lg mx-auto mb-10 leading-relaxed">
@@ -55,15 +50,7 @@ export default function PortfolioPage() {
               represents a real business problem solved with thoughtful engineering.
             </p>
 
-            {/* Stats bar */}
-            <div className="flex w-full sm:w-auto sm:inline-flex items-center divide-x divide-outline/40 glass rounded-2xl border border-outline/40 overflow-hidden mb-10">
-              {stats.map(({ value, label }) => (
-                <div key={label} className="flex-1 sm:flex-none px-4 sm:px-8 py-3 text-center">
-                  <p className="font-display text-2xl text-primary leading-none mb-0.5">{value}</p>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">{label}</p>
-                </div>
-              ))}
-            </div>
+
           </div>
 
           <ProjectGrid projects={projects} />
