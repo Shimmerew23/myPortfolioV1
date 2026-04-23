@@ -189,7 +189,7 @@ export default function HeroSection() {
 
             <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[480px] md:h-[520px] rounded-2xl overflow-hidden border-0">
               <Image
-                src="/images/profile.jpg"
+                src="/images/Profile.png"
                 alt="Justine Psalm Acosta"
                 fill
                 sizes="(max-width: 640px) 320px, (max-width: 768px) 384px, 480px"
