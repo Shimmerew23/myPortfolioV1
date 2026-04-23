@@ -46,7 +46,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/verdant.png",
     isNda: false,
-    // liveUrl: "https://mydmproject.vercel.app/",
+    liveUrl: "https://mydmproject.vercel.app/",
   },
   {
     slug: "solar-calculator",
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/cartly.png",
     isNda: false,
-    // liveUrl: "https://mcartly.vercel.app/",
+    liveUrl: "https://mcartly.vercel.app/",
   },
   {
     slug: "entertainment-booking",
