@@ -158,6 +158,7 @@ export const projects: Project[] = [
     image: "/images/projects/cartly.png",
     isNda: false,
     liveUrl: "https://mcartly.vercel.app/",
+    featured: true,
   },
   {
     slug: "entertainment-booking",
