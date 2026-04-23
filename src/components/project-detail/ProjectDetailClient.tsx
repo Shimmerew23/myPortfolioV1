@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, ArrowRight, ExternalLink, Shield, ChevronLeft, Rocket } from "lucide-react";
 import type { Project } from "@/types";
 import { getCategoryColors } from "@/lib/categoryColors";
@@ -29,13 +28,14 @@ export default function ProjectDetailClient({ project, prev, next }: Props) {
         className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden"
       >
         {/* Background image */}
-        {project.image && !project.isNda && (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover object-top opacity-40 mix-blend-luminosity"
-            priority
+        {project.image && (
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `url(${project.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center top",
+            }}
           />
         )}
 

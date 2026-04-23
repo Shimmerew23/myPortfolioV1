@@ -129,15 +129,23 @@ function PublicCardContent({
           <span
             className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest"
             style={{
-              background: `rgba(${colors.primary.join(",")}, 0.2)`,
-              border: `1px solid rgba(${colors.primary.join(",")}, 0.4)`,
+              background: "rgba(13,11,11,0.72)",
+              border: `1px solid rgba(${colors.primary.join(",")}, 0.5)`,
               color: `rgb(${colors.accent.join(",")})`,
+              backdropFilter: "blur(8px)",
             }}
           >
             {project.category}
           </span>
           {project.liveUrl && (
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+            <span
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest text-emerald-400"
+              style={{
+                background: "rgba(13,11,11,0.72)",
+                border: "1px solid rgba(52,211,153,0.35)",
+                backdropFilter: "blur(8px)",
+              }}
+            >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
@@ -190,68 +198,93 @@ function NdaCardContent({
   return (
     <Link href={`/portfolio/${project.slug}`} className="flex flex-col h-full">
       <div className="relative h-[220px] shrink-0 overflow-hidden">
-        {/* Gradient background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, rgba(${colors.primary.join(",")},0.08) 0%, rgba(23,18,18,1) 100%)`,
-          }}
-        />
-
-        {/* Hex stream */}
-        <HexStreamBg colors={colors} />
-
-        {/* Scanline on hover */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden"
-          style={{ transition: "opacity 0.3s" }}
-        >
-          <div
-            className="absolute left-0 right-0 h-20 pointer-events-none"
-            style={{
-              background: `linear-gradient(transparent, rgba(${colors.primary.join(",")}, 0.08), transparent)`,
-              animation: "scanline 3s linear infinite",
-            }}
-          />
-        </div>
-
-        {/* Centred lock icon */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center"
-            style={{
-              background: "rgba(23,18,18,0.8)",
-              border: `1px solid rgba(${colors.primary.join(",")}, 0.25)`,
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <ShieldCheck
-              size={24}
-              style={{ color: `rgba(${colors.accent.join(",")}, 0.7)` }}
-              strokeWidth={1.5}
+        {project.image ? (
+          <>
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">
-            Under NDA
-          </span>
-          {/* <span className="text-[10px] font-mono text-text-tertiary/50 opacity-0 group-hover:opacity-100 transition-opacity">
-            Details available on request
-          </span> */}
-        </div>
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(to bottom, transparent 30%, rgba(32,26,26,0.97) 100%)`,
+              }}
+            />
+          </>
+        ) : (
+          <>
+            {/* Gradient background */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, rgba(${colors.primary.join(",")},0.08) 0%, rgba(23,18,18,1) 100%)`,
+              }}
+            />
+
+            {/* Hex stream */}
+            <HexStreamBg colors={colors} />
+
+            {/* Scanline on hover */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden"
+              style={{ transition: "opacity 0.3s" }}
+            >
+              <div
+                className="absolute left-0 right-0 h-20 pointer-events-none"
+                style={{
+                  background: `linear-gradient(transparent, rgba(${colors.primary.join(",")}, 0.08), transparent)`,
+                  animation: "scanline 3s linear infinite",
+                }}
+              />
+            </div>
+
+            {/* Centred lock icon */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                style={{
+                  background: "rgba(23,18,18,0.8)",
+                  border: `1px solid rgba(${colors.primary.join(",")}, 0.25)`,
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <ShieldCheck
+                  size={24}
+                  style={{ color: `rgba(${colors.accent.join(",")}, 0.7)` }}
+                  strokeWidth={1.5}
+                />
+              </div>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-text-tertiary">
+                Under NDA
+              </span>
+            </div>
+          </>
+        )}
 
         {/* Badges */}
         <div className="absolute top-4 left-4 flex items-center gap-2">
           <span
             className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest"
             style={{
-              background: `rgba(${colors.primary.join(",")}, 0.15)`,
-              border: `1px solid rgba(${colors.primary.join(",")}, 0.3)`,
+              background: `rgba(13,11,11,0.72)`,
+              border: `1px solid rgba(${colors.primary.join(",")}, 0.5)`,
               color: `rgb(${colors.accent.join(",")})`,
+              backdropFilter: "blur(8px)",
             }}
           >
             {project.category}
           </span>
-          <span className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-surface-1/80 border border-outline text-text-tertiary">
+          <span
+            className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest text-white/70"
+            style={{
+              background: "rgba(13,11,11,0.72)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
             Confidential
           </span>
         </div>

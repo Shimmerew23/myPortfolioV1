@@ -223,7 +223,7 @@ export const projects: Project[] = [
       "ATS webhook integration",
       "Detailed per-candidate analytics reports",
     ],
-    image: undefined,
+    image: "/images/projects/typing.png",
     isNda: true,
   },
 ];
