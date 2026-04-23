@@ -104,7 +104,7 @@ export default function HeroSection() {
             deployment. Working with clients across the US, Canada, and Europe,
             specializing in{" "}
             <span className="text-primary-muted">AI-integrated applications</span>{" "}
-            that actually ship.
+            that actually ship. Based in the Philippines.
           </motion.p>
 
           {/* Trust chips */}
