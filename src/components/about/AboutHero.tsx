@@ -8,7 +8,7 @@ import { staggerContainer, staggerItem } from "@/lib/motion";
 const stats = [
   { value: "3+",  label: "Years Experience", note: "Since 2021" },
   { value: "10+", label: "Projects Shipped",  note: "Live in production" },
-  { value: "3",   label: "Countries Served",  note: "US · Canada · EU" },
+  { value: "3",   label: "Continent Served",  note: "US · Canada · EU" },
   { value: "5+",  label: "Industries",        note: "SaaS · GIS · AI · more" },
 ];
 
